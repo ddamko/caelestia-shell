@@ -5,7 +5,6 @@ import QtQuick
 import Caelestia.Config
 import qs.components
 import qs.components.controls
-import qs.components.effects
 import qs.components.images
 import qs.services
 

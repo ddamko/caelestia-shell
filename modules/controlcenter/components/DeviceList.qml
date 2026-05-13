@@ -6,7 +6,6 @@ import QtQuick.Layouts
 import Caelestia.Config
 import qs.components
 import qs.components.containers
-import qs.components.controls
 import qs.services
 
 ColumnLayout {

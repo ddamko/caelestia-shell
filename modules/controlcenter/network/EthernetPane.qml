@@ -3,7 +3,6 @@ pragma ComponentBehavior: Bound
 import ".."
 import "../components"
 import QtQuick
-import qs.components
 import qs.components.containers
 
 SplitPaneWithDetails {
