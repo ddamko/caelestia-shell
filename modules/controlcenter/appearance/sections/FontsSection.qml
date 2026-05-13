@@ -45,7 +45,7 @@ CollapsibleSection {
                 delegate: StyledRect {
                     required property string modelData
                     required property int index
-                    readonly property bool isCurrent: modelData === rootPane.fontFamilySans
+                    readonly property bool isCurrent: modelData === root.rootPane.fontFamilySans
 
                     width: ListView.view.width
                     color: Qt.alpha(Colours.tPalette.m3surfaceContainer, isCurrent ? Colours.tPalette.m3surfaceContainer.a : 0)
@@ -56,8 +56,8 @@ CollapsibleSection {
 
                     StateLayer {
                         onClicked: {
-                            rootPane.fontFamilySans = modelData;
-                            rootPane.saveConfig();
+                            root.rootPane.fontFamilySans = modelData;
+                            root.rootPane.saveConfig();
                         }
                     }
 
@@ -124,7 +124,7 @@ CollapsibleSection {
                 delegate: StyledRect {
                     required property string modelData
                     required property int index
-                    readonly property bool isCurrent: modelData === rootPane.fontFamilyMono
+                    readonly property bool isCurrent: modelData === root.rootPane.fontFamilyMono
 
                     width: ListView.view.width
                     color: Qt.alpha(Colours.tPalette.m3surfaceContainer, isCurrent ? Colours.tPalette.m3surfaceContainer.a : 0)
@@ -135,8 +135,8 @@ CollapsibleSection {
 
                     StateLayer {
                         onClicked: {
-                            rootPane.fontFamilyMono = modelData;
-                            rootPane.saveConfig();
+                            root.rootPane.fontFamilyMono = modelData;
+                            root.rootPane.saveConfig();
                         }
                     }
 
@@ -205,7 +205,7 @@ CollapsibleSection {
                 delegate: StyledRect {
                     required property string modelData
                     required property int index
-                    readonly property bool isCurrent: modelData === rootPane.fontFamilyMaterial
+                    readonly property bool isCurrent: modelData === root.rootPane.fontFamilyMaterial
 
                     width: ListView.view.width
                     color: Qt.alpha(Colours.tPalette.m3surfaceContainer, isCurrent ? Colours.tPalette.m3surfaceContainer.a : 0)
@@ -216,8 +216,8 @@ CollapsibleSection {
 
                     StateLayer {
                         onClicked: {
-                            rootPane.fontFamilyMaterial = modelData;
-                            rootPane.saveConfig();
+                            root.rootPane.fontFamilyMaterial = modelData;
+                            root.rootPane.saveConfig();
                         }
                     }
 
@@ -263,7 +263,7 @@ CollapsibleSection {
             Layout.fillWidth: true
 
             label: qsTr("Font size scale")
-            value: rootPane.fontSizeScale
+            value: root.rootPane.fontSizeScale
             from: 0.7
             to: 1.5
             decimals: 2
@@ -274,8 +274,8 @@ CollapsibleSection {
             }
 
             onValueModified: newValue => {
-                rootPane.fontSizeScale = newValue;
-                rootPane.saveConfig();
+                root.rootPane.fontSizeScale = newValue;
+                root.rootPane.saveConfig();
             }
         }
     }
