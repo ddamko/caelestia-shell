@@ -1,10 +1,6 @@
 pragma ComponentBehavior: Bound
 
-import ".."
 import QtQuick
-import QtQuick.Layouts
-import Quickshell.Widgets
-import Caelestia.Config
 import qs.components
 import qs.components.containers
 import qs.components.effects
