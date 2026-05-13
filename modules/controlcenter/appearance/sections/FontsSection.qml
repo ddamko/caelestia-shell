@@ -27,7 +27,7 @@ CollapsibleSection {
 
         Loader {
             Layout.fillWidth: true
-            Layout.preferredHeight: item ? Math.min(item.contentHeight, 300) : 0
+            Layout.preferredHeight: item ? Math.min((item as StyledListView).contentHeight, 300) : 0
             asynchronous: true
             active: sansFontSection.expanded
 
@@ -106,7 +106,7 @@ CollapsibleSection {
 
         Loader {
             Layout.fillWidth: true
-            Layout.preferredHeight: item ? Math.min(item.contentHeight, 300) : 0
+            Layout.preferredHeight: item ? Math.min((item as StyledListView).contentHeight, 300) : 0
             asynchronous: true
             active: monoFontSection.expanded
 
@@ -187,7 +187,7 @@ CollapsibleSection {
             id: materialFontLoader
 
             Layout.fillWidth: true
-            Layout.preferredHeight: item ? Math.min(item.contentHeight, 300) : 0
+            Layout.preferredHeight: item ? Math.min((item as StyledListView).contentHeight, 300) : 0
             asynchronous: true
             active: materialFontSection.expanded
 
