@@ -521,7 +521,7 @@ Item {
                 Layout.leftMargin: Tokens.padding.large * 2
                 Layout.rightMargin: Tokens.padding.large * 2
                 Layout.topMargin: Tokens.padding.large * 2
-                visible: displayedApp === null
+                visible: appDetailsLayout.displayedApp === null
                 icon: "apps"
                 title: qsTr("Launcher Applications")
             }
@@ -531,7 +531,7 @@ Item {
                 Layout.leftMargin: Tokens.padding.large * 2
                 Layout.rightMargin: Tokens.padding.large * 2
                 Layout.topMargin: Tokens.padding.large * 2
-                visible: displayedApp !== null
+                visible: appDetailsLayout.displayedApp !== null
                 implicitWidth: Math.max(appIconImage.implicitWidth, appTitleText.implicitWidth)
                 implicitHeight: appIconImage.implicitHeight + Tokens.spacing.normal + appTitleText.implicitHeight
 
@@ -561,7 +561,7 @@ Item {
                         id: appTitleText
 
                         Layout.alignment: Qt.AlignHCenter
-                        text: displayedApp ? (displayedApp.name || displayedApp.entry?.name || qsTr("Application Details")) : ""
+                        text: appDetailsLayout.displayedApp ? (appDetailsLayout.displayedApp.name || appDetailsLayout.displayedApp.entry?.name || qsTr("Application Details")) : ""
                         font.pointSize: Tokens.font.size.large
                         font.bold: true
                     }
