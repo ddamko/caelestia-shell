@@ -3,13 +3,9 @@ pragma ComponentBehavior: Bound
 import ".."
 import "../components"
 import "./sections"
-import "../../launcher/services"
 import QtQuick
 import QtQuick.Layouts
-import Quickshell
-import Quickshell.Widgets
 import Caelestia.Config
-import Caelestia.Models
 import qs.components
 import qs.components.containers
 import qs.components.controls

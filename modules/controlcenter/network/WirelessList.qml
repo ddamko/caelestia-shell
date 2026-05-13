@@ -2,7 +2,6 @@ pragma ComponentBehavior: Bound
 
 import ".."
 import "../components"
-import "."
 import QtQuick
 import QtQuick.Layouts
 import Quickshell

@@ -2,7 +2,6 @@ pragma ComponentBehavior: Bound
 
 import ".."
 import "../components"
-import "../../launcher/services"
 import "../../../utils/scripts/fuzzysort.js" as Fuzzy
 import QtQuick
 import QtQuick.Layouts

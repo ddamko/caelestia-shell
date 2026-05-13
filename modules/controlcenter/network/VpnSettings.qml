@@ -3,7 +3,6 @@ pragma ComponentBehavior: Bound
 import ".."
 import "../components"
 import QtQuick
-import QtQuick.Controls
 import QtQuick.Layouts
 import Quickshell
 import Caelestia.Config

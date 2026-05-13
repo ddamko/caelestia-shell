@@ -1,6 +1,5 @@
 pragma ComponentBehavior: Bound
 
-import ".."
 import "../../../launcher/services"
 import QtQuick
 import QtQuick.Layouts

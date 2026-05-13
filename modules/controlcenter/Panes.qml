@@ -1,13 +1,5 @@
 pragma ComponentBehavior: Bound
 
-import "bluetooth"
-import "network"
-import "audio"
-import "appearance"
-import "taskbar"
-import "notifications"
-import "launcher"
-import "dashboard"
 import QtQuick
 import QtQuick.Layouts
 import Quickshell.Widgets
