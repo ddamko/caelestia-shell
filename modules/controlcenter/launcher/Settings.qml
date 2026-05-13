@@ -7,8 +7,6 @@ import QtQuick.Layouts
 import Caelestia.Config
 import qs.components
 import qs.components.controls
-import qs.components.effects
-import qs.services
 
 ColumnLayout {
     id: root

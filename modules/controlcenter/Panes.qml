@@ -5,7 +5,6 @@ import QtQuick.Layouts
 import Quickshell.Widgets
 import Caelestia.Config
 import qs.components
-import qs.services
 import qs.modules.controlcenter
 
 ClippingRectangle {
