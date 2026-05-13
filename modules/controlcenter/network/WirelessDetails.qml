@@ -17,14 +17,14 @@ DeviceDetails {
     readonly property var network: root.session.network.active
 
     function checkSavedProfile(): void {
-        if (network && network.ssid) {
+        if (root.network && root.network.ssid) {
             Nmcli.loadSavedConnections(() => {});
         }
     }
 
     function updateDeviceDetails(): void {
-        if (network && network.ssid) {
-            const isActive = network.active || (Nmcli.active && Nmcli.active.ssid === network.ssid);
+        if (root.network && root.network.ssid) {
+            const isActive = root.network.active || (Nmcli.active && Nmcli.active.ssid === root.network.ssid);
             if (isActive) {
                 Nmcli.getWirelessDeviceDetails("");
             } else {
@@ -35,7 +35,7 @@ DeviceDetails {
         }
     }
 
-    device: network
+    device: root.network
 
     Component.onCompleted: {
         updateDeviceDetails();
@@ -44,7 +44,7 @@ DeviceDetails {
 
     onNetworkChanged: {
         connectionUpdateTimer.stop();
-        if (network && network.ssid) {
+        if (root.network && root.network.ssid) {
             connectionUpdateTimer.start();
         }
         updateDeviceDetails();
@@ -173,8 +173,8 @@ DeviceDetails {
             updateDeviceDetails();
         }
         function onWirelessDeviceDetailsChanged() {
-            if (network && network.ssid) {
-                const isActive = network.active || (Nmcli.active && Nmcli.active.ssid === network.ssid);
+            if (root.network && root.network.ssid) {
+                const isActive = root.network.active || (Nmcli.active && Nmcli.active.ssid === root.network.ssid);
                 if (isActive && Nmcli.wirelessDeviceDetails && Nmcli.wirelessDeviceDetails !== null) {
                     connectionUpdateTimer.stop();
                 }
@@ -189,10 +189,10 @@ DeviceDetails {
 
         interval: 500
         repeat: true
-        running: network && network.ssid
+        running: root.network && root.network.ssid
         onTriggered: {
-            if (network) {
-                const isActive = network.active || (Nmcli.active && Nmcli.active.ssid === network.ssid);
+            if (root.network) {
+                const isActive = root.network.active || (Nmcli.active && Nmcli.active.ssid === root.network.ssid);
                 if (isActive) {
                     if (!Nmcli.wirelessDeviceDetails || Nmcli.wirelessDeviceDetails === null) {
                         Nmcli.getWirelessDeviceDetails("", () => {});
