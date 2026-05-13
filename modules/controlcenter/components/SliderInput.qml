@@ -170,9 +170,7 @@ ColumnLayout {
         }
 
         // Use Binding to allow slider to move freely during dragging
-        Binding {
-            target: slider
-            property: "value"
+        Binding on value {
             value: root.value
             when: !slider.pressed
         }
