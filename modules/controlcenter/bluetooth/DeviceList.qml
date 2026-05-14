@@ -15,7 +15,6 @@ import qs.utils
 DeviceList {
     id: root
 
-    required property Session session
     readonly property bool smallDiscoverable: width <= 540
     readonly property bool smallPairable: width <= 480
 

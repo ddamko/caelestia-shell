@@ -8,7 +8,7 @@ import Caelestia.Config
 Item {
     id: root
 
-    property Session session
+    required property Session session
     property var device: null
 
     property Component headerComponent: null

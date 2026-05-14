@@ -12,8 +12,6 @@ import qs.services
 DeviceList {
     id: root
 
-    required property Session session
-
     title: qsTr("Devices (%1)").arg(Nmcli.ethernetDevices.length)
     description: qsTr("All available ethernet devices")
     activeItem: session.ethernet.active

@@ -14,8 +14,6 @@ import qs.utils
 DeviceList {
     id: root
 
-    required property Session session
-
     function checkSavedProfileForNetwork(ssid: string): void {
         if (ssid && ssid.length > 0) {
             Nmcli.loadSavedConnections(() => {});

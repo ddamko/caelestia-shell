@@ -13,7 +13,6 @@ import qs.utils
 DeviceDetails {
     id: root
 
-    required property Session session
     readonly property var network: root.session.network.active
 
     function checkSavedProfile(): void {
