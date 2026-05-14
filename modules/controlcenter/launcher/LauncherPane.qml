@@ -298,7 +298,7 @@ Item {
                         clip: true
 
                         StyledScrollBar.vertical: StyledScrollBar {
-                            flickable: parent
+                            flickable: appsListView
                         }
 
                         delegate: StyledRect {
@@ -585,7 +585,7 @@ Item {
                     contentHeight: debugLayout.height
 
                     StyledScrollBar.vertical: StyledScrollBar {
-                        flickable: parent
+                        flickable: detailsFlickable
                     }
 
                     ColumnLayout {
