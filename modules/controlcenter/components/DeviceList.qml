@@ -11,7 +11,7 @@ import qs.services
 ColumnLayout {
     id: root
 
-    property Session session: null
+    required property Session session
     property var model: null
     property Component delegate: null
 

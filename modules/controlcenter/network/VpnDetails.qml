@@ -14,7 +14,6 @@ import qs.services
 DeviceDetails {
     id: root
 
-    required property Session session
     readonly property var vpnProvider: root.session.vpn.active
     readonly property bool providerEnabled: {
         if (!vpnProvider || vpnProvider.index === undefined)
