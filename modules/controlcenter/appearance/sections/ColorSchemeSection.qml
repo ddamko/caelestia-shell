@@ -22,6 +22,8 @@ CollapsibleSection {
             model: Schemes.list
 
             delegate: StyledRect {
+                id: delegate
+
                 required property var modelData
 
                 Layout.fillWidth: true
@@ -37,8 +39,8 @@ CollapsibleSection {
 
                 StateLayer {
                     onClicked: {
-                        const name = modelData.name;
-                        const flavour = modelData.flavour;
+                        const name = delegate.modelData.name;
+                        const flavour = delegate.modelData.flavour;
                         const schemeKey = `${name} ${flavour}`;
 
                         Schemes.currentScheme = schemeKey;
@@ -73,9 +75,9 @@ CollapsibleSection {
                         Layout.alignment: Qt.AlignVCenter
 
                         border.width: 1
-                        border.color: Qt.alpha(`#${modelData.colours?.outline}`, 0.5)
+                        border.color: Qt.alpha(`#${delegate.modelData.colours?.outline}`, 0.5)
 
-                        color: `#${modelData.colours?.surface}`
+                        color: `#${delegate.modelData.colours?.surface}`
                         radius: Tokens.rounding.full
                         implicitWidth: iconPlaceholder.implicitWidth
                         implicitHeight: iconPlaceholder.implicitWidth
@@ -102,7 +104,7 @@ CollapsibleSection {
                                 anchors.right: parent.right
 
                                 implicitWidth: preview.implicitWidth
-                                color: `#${modelData.colours?.primary}`
+                                color: `#${delegate.modelData.colours?.primary}`
                                 radius: Tokens.rounding.full
                             }
                         }
@@ -113,12 +115,12 @@ CollapsibleSection {
                         spacing: 0
 
                         StyledText {
-                            text: modelData.flavour ?? ""
+                            text: delegate.modelData.flavour ?? ""
                             font.pointSize: Tokens.font.size.normal
                         }
 
                         StyledText {
-                            text: modelData.name ?? ""
+                            text: delegate.modelData.name ?? ""
                             font.pointSize: Tokens.font.size.small
                             color: Colours.palette.m3outline
 
@@ -130,7 +132,7 @@ CollapsibleSection {
 
                     Loader {
                         asynchronous: true
-                        active: isCurrent
+                        active: delegate.isCurrent
 
                         sourceComponent: MaterialIcon {
                             text: "check"
