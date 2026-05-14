@@ -86,7 +86,7 @@ Item {
 
         MouseArea {
             anchors.fill: parent
-            onClicked: closeDialog()
+            onClicked: root.closeDialog()
         }
     }
 
@@ -102,7 +102,7 @@ Item {
         color: Colours.tPalette.m3surface
         opacity: root.session.network.showPasswordDialog && !root.isClosing ? 1 : 0
         scale: root.session.network.showPasswordDialog && !root.isClosing ? 1 : 0.7
-        Keys.onEscapePressed: closeDialog()
+        Keys.onEscapePressed: root.closeDialog()
 
         Behavior on opacity {
             Anim {}
@@ -472,7 +472,7 @@ Item {
         triggeredOnStart: false
         onTriggered: {
             repeatCount++;
-            checkConnectionStatus();
+            root.checkConnectionStatus();
         }
 
         onRunningChanged: {
@@ -493,7 +493,7 @@ Item {
                     connectionMonitor.stop();
                     connectButton.connecting = false;
                     connectButton.text = qsTr("Connect");
-                    closeDialog();
+                    root.closeDialog();
                 }
             }
         }
@@ -502,7 +502,7 @@ Item {
     Connections {
         function onActiveChanged() {
             if (root.visible) {
-                checkConnectionStatus();
+                root.checkConnectionStatus();
             }
         }
         function onConnectionFailed(ssid: string) {

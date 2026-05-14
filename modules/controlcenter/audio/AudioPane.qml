@@ -590,6 +590,8 @@ Item {
                                     }
 
                                     StyledSlider {
+                                        id: streamVolumeSlider
+
                                         Layout.fillWidth: true
                                         implicitHeight: Tokens.padding.normal * 3
 
@@ -606,7 +608,7 @@ Item {
                                         Connections {
                                             function onAudioChanged() {
                                                 if (streamDelegate.modelData?.audio) {
-                                                    value = streamDelegate.modelData.audio.volume;
+                                                    streamVolumeSlider.value = streamDelegate.modelData.audio.volume;
                                                 }
                                             }
 
