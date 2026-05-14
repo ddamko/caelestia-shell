@@ -116,7 +116,7 @@ Item {
     Connections {
         function onActiveChanged() {
             root.selectedApp = root.session.launcher.active;
-            updateToggleState();
+            root.updateToggleState();
         }
 
         target: root.session.launcher
@@ -132,7 +132,7 @@ Item {
 
     Connections {
         function onAppsChanged() {
-            updateFilteredApps();
+            root.updateFilteredApps();
         }
 
         target: allAppsDb
