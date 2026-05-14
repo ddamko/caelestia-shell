@@ -302,6 +302,8 @@ Item {
                         }
 
                         delegate: StyledRect {
+                            id: appDelegate
+
                             required property var modelData
 
                             readonly property bool isSelected: root.selectedApp === modelData
@@ -327,7 +329,7 @@ Item {
 
                             StateLayer {
                                 onClicked: {
-                                    root.session.launcher.active = modelData;
+                                    root.session.launcher.active = appDelegate.modelData;
                                 }
                             }
 
@@ -344,20 +346,20 @@ Item {
                                     Layout.alignment: Qt.AlignVCenter
                                     implicitSize: 32
                                     source: {
-                                        const entry = modelData.entry;
+                                        const entry = appDelegate.modelData.entry;
                                         return entry ? Quickshell.iconPath(entry.icon, "image-missing") : "image-missing";
                                     }
                                 }
 
                                 StyledText {
                                     Layout.fillWidth: true
-                                    text: modelData.name || modelData.entry?.name || qsTr("Unknown")
+                                    text: appDelegate.modelData.name || appDelegate.modelData.entry?.name || qsTr("Unknown")
                                     font.pointSize: Tokens.font.size.normal
                                 }
 
                                 Loader {
-                                    readonly property bool isHidden: modelData ? Strings.testRegexList(GlobalConfig.launcher.hiddenApps, modelData.id) : false
-                                    readonly property bool isFav: modelData ? Strings.testRegexList(GlobalConfig.launcher.favouriteApps, modelData.id) : false
+                                    readonly property bool isHidden: appDelegate.modelData ? Strings.testRegexList(GlobalConfig.launcher.hiddenApps, appDelegate.modelData.id) : false
+                                    readonly property bool isFav: appDelegate.modelData ? Strings.testRegexList(GlobalConfig.launcher.favouriteApps, appDelegate.modelData.id) : false
 
                                     Layout.alignment: Qt.AlignVCenter
                                     asynchronous: true

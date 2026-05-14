@@ -28,6 +28,8 @@ GridView {
     }
 
     delegate: Item {
+        id: delegate
+
         required property var modelData
         required property int index
         readonly property bool isCurrent: modelData && modelData.path === Wallpapers.actualCurrent
@@ -39,27 +41,27 @@ GridView {
 
         StateLayer {
             onClicked: {
-                Wallpapers.setWallpaper(modelData.path);
+                Wallpapers.setWallpaper(delegate.modelData.path);
             }
 
             anchors.fill: parent
-            anchors.leftMargin: itemMargin
-            anchors.rightMargin: itemMargin
-            anchors.topMargin: itemMargin
-            anchors.bottomMargin: itemMargin
-            radius: itemRadius
+            anchors.leftMargin: delegate.itemMargin
+            anchors.rightMargin: delegate.itemMargin
+            anchors.topMargin: delegate.itemMargin
+            anchors.bottomMargin: delegate.itemMargin
+            radius: delegate.itemRadius
         }
 
         StyledClippingRect {
             id: image
 
             anchors.fill: parent
-            anchors.leftMargin: itemMargin
-            anchors.rightMargin: itemMargin
-            anchors.topMargin: itemMargin
-            anchors.bottomMargin: itemMargin
+            anchors.leftMargin: delegate.itemMargin
+            anchors.rightMargin: delegate.itemMargin
+            anchors.topMargin: delegate.itemMargin
+            anchors.bottomMargin: delegate.itemMargin
             color: Colours.tPalette.m3surfaceContainer
-            radius: itemRadius
+            radius: delegate.itemRadius
             antialiasing: true
             layer.enabled: true
             layer.smooth: true
@@ -67,7 +69,7 @@ GridView {
             CachingImage {
                 id: cachingImage
 
-                path: modelData.path
+                path: delegate.modelData.path
                 anchors.fill: parent
                 fillMode: Image.PreserveAspectCrop
                 cache: true
@@ -91,7 +93,7 @@ GridView {
                 id: fallbackImage
 
                 anchors.fill: parent
-                source: fallbackTimer.triggered && cachingImage.status !== Image.Ready ? modelData.path : ""
+                source: fallbackTimer.triggered && cachingImage.status !== Image.Ready ? delegate.modelData.path : ""
                 asynchronous: true
                 fillMode: Image.PreserveAspectCrop
                 cache: true
@@ -167,13 +169,13 @@ GridView {
 
         Rectangle {
             anchors.fill: parent
-            anchors.leftMargin: itemMargin
-            anchors.rightMargin: itemMargin
-            anchors.topMargin: itemMargin
-            anchors.bottomMargin: itemMargin
+            anchors.leftMargin: delegate.itemMargin
+            anchors.rightMargin: delegate.itemMargin
+            anchors.topMargin: delegate.itemMargin
+            anchors.bottomMargin: delegate.itemMargin
             color: "transparent"
-            radius: itemRadius + border.width
-            border.width: isCurrent ? 2 : 0
+            radius: delegate.itemRadius + border.width
+            border.width: delegate.isCurrent ? 2 : 0
             border.color: Colours.palette.m3primary
             antialiasing: true
             smooth: true
@@ -190,7 +192,7 @@ GridView {
                 anchors.top: parent.top
                 anchors.margins: Tokens.padding.small
 
-                visible: isCurrent
+                visible: delegate.isCurrent
                 text: "check_circle"
                 color: Colours.palette.m3primary
                 font.pointSize: Tokens.font.size.large
@@ -207,10 +209,10 @@ GridView {
             anchors.rightMargin: Tokens.padding.normal + Tokens.spacing.normal / 2
             anchors.bottomMargin: Tokens.padding.normal
 
-            text: modelData.name
+            text: delegate.modelData.name
             font.pointSize: Tokens.font.size.smaller
             font.weight: 500
-            color: isCurrent ? Colours.palette.m3primary : Colours.palette.m3onSurface
+            color: delegate.isCurrent ? Colours.palette.m3primary : Colours.palette.m3onSurface
             elide: Text.ElideMiddle
             maximumLineCount: 1
             horizontalAlignment: Text.AlignHCenter

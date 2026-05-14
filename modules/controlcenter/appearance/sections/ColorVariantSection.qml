@@ -23,6 +23,8 @@ CollapsibleSection {
             model: M3Variants.list
 
             delegate: StyledRect {
+                id: delegate
+
                 required property var modelData
 
                 Layout.fillWidth: true
@@ -35,7 +37,7 @@ CollapsibleSection {
 
                 StateLayer {
                     onClicked: {
-                        const variant = modelData.variant;
+                        const variant = delegate.modelData.variant;
 
                         Schemes.currentVariant = variant;
                         Quickshell.execDetached(["caelestia", "scheme", "set", "-v", variant]);
@@ -66,19 +68,19 @@ CollapsibleSection {
                     spacing: Tokens.spacing.normal
 
                     MaterialIcon {
-                        text: modelData.icon
+                        text: delegate.modelData.icon
                         font.pointSize: Tokens.font.size.large
-                        fill: modelData.variant === Schemes.currentVariant ? 1 : 0
+                        fill: delegate.modelData.variant === Schemes.currentVariant ? 1 : 0
                     }
 
                     StyledText {
                         Layout.fillWidth: true
-                        text: modelData.name
-                        font.weight: modelData.variant === Schemes.currentVariant ? 500 : 400
+                        text: delegate.modelData.name
+                        font.weight: delegate.modelData.variant === Schemes.currentVariant ? 500 : 400
                     }
 
                     MaterialIcon {
-                        visible: modelData.variant === Schemes.currentVariant
+                        visible: delegate.modelData.variant === Schemes.currentVariant
                         text: "check"
                         color: Colours.palette.m3primary
                         font.pointSize: Tokens.font.size.large

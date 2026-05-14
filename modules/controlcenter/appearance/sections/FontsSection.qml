@@ -43,6 +43,8 @@ CollapsibleSection {
                 }
 
                 delegate: StyledRect {
+                    id: sansDelegate
+
                     required property string modelData
                     required property int index
                     readonly property bool isCurrent: modelData === root.rootPane.fontFamilySans
@@ -56,7 +58,7 @@ CollapsibleSection {
 
                     StateLayer {
                         onClicked: {
-                            root.rootPane.fontFamilySans = modelData;
+                            root.rootPane.fontFamilySans = sansDelegate.modelData;
                             root.rootPane.saveConfig();
                         }
                     }
@@ -72,7 +74,7 @@ CollapsibleSection {
                         spacing: Tokens.spacing.normal
 
                         StyledText {
-                            text: modelData
+                            text: sansDelegate.modelData
                             font.pointSize: Tokens.font.size.normal
                         }
 
@@ -82,7 +84,7 @@ CollapsibleSection {
 
                         Loader {
                             asynchronous: true
-                            active: isCurrent
+                            active: sansDelegate.isCurrent
 
                             sourceComponent: MaterialIcon {
                                 text: "check"
@@ -122,6 +124,8 @@ CollapsibleSection {
                 }
 
                 delegate: StyledRect {
+                    id: monoDelegate
+
                     required property string modelData
                     required property int index
                     readonly property bool isCurrent: modelData === root.rootPane.fontFamilyMono
@@ -135,7 +139,7 @@ CollapsibleSection {
 
                     StateLayer {
                         onClicked: {
-                            root.rootPane.fontFamilyMono = modelData;
+                            root.rootPane.fontFamilyMono = monoDelegate.modelData;
                             root.rootPane.saveConfig();
                         }
                     }
@@ -151,7 +155,7 @@ CollapsibleSection {
                         spacing: Tokens.spacing.normal
 
                         StyledText {
-                            text: modelData
+                            text: monoDelegate.modelData
                             font.pointSize: Tokens.font.size.normal
                         }
 
@@ -161,7 +165,7 @@ CollapsibleSection {
 
                         Loader {
                             asynchronous: true
-                            active: isCurrent
+                            active: monoDelegate.isCurrent
 
                             sourceComponent: MaterialIcon {
                                 text: "check"
@@ -203,6 +207,8 @@ CollapsibleSection {
                 }
 
                 delegate: StyledRect {
+                    id: materialDelegate
+
                     required property string modelData
                     required property int index
                     readonly property bool isCurrent: modelData === root.rootPane.fontFamilyMaterial
@@ -216,7 +222,7 @@ CollapsibleSection {
 
                     StateLayer {
                         onClicked: {
-                            root.rootPane.fontFamilyMaterial = modelData;
+                            root.rootPane.fontFamilyMaterial = materialDelegate.modelData;
                             root.rootPane.saveConfig();
                         }
                     }
@@ -232,7 +238,7 @@ CollapsibleSection {
                         spacing: Tokens.spacing.normal
 
                         StyledText {
-                            text: modelData
+                            text: materialDelegate.modelData
                             font.pointSize: Tokens.font.size.normal
                         }
 
@@ -242,7 +248,7 @@ CollapsibleSection {
 
                         Loader {
                             asynchronous: true
-                            active: isCurrent
+                            active: materialDelegate.isCurrent
 
                             sourceComponent: MaterialIcon {
                                 text: "check"
